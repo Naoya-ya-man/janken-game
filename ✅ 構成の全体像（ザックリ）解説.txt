@@ -1,0 +1,104 @@
+✅ 構成の全体像（ザックリ）
+css
+コピーする
+編集する
+HTML： ボタンと表示領域の配置（見えるもの）
+CSS ： 見た目の装飾
+JS  ： ロジックと表示の動的変更（じゃんけん処理）
+🔥 JavaScriptの重要ポイント解説（main.js）
+① let win = 0; など：スコアのカウント変数
+js
+コピーする
+編集する
+let win = 0;
+let lose = 0;
+let draw = 0;
+ゲーム中に勝敗の数を記録する。
+
+これはページを開いている間だけ有効（リロードしたら0に戻る）。
+
+② function play(playerHand)：メインのじゃんけん処理
+js
+コピーする
+編集する
+function play(playerHand) {
+HTMLのボタンをクリックしたときに呼ばれる関数。
+
+playerHand は、クリックしたボタンの手（"グー"など）。
+
+③ CPUの手を決める部分：ランダム処理
+js
+コピーする
+編集する
+const hands = ["グー", "チョキ", "パー"];
+const cpuHand = hands[Math.floor(Math.random() * 3)];
+Math.random() で 0〜1のランダムな数を生成。
+
+Math.floor(... * 3) で 0, 1, 2 のどれかに丸めて配列からCPUの手を選ぶ。
+
+つまり 「CPUがランダムで手を選ぶ」処理。
+
+④ 勝敗の判定：if文の地獄
+js
+コピーする
+編集する
+if (playerHand === cpuHand) {
+  result = "あいこ";
+  draw++;
+} else if (
+  (playerHand === "グー" && cpuHand === "チョキ") ||
+  (playerHand === "チョキ" && cpuHand === "パー") ||
+  (playerHand === "パー" && cpuHand === "グー")
+) {
+  result = "勝ち";
+  win++;
+} else {
+  result = "負け";
+  lose++;
+}
+プレイヤーとCPUの手を比較して勝ち/負け/あいこを判定。
+
+それに応じて win, lose, draw を1増やす。
+
+条件が読みにくい？それが正常。最初は丁寧にトレースすれば理解できる。
+
+⑤ DOM操作（HTMLの中身をJavaScriptで変更）
+js
+コピーする
+編集する
+document.getElementById("player").textContent = `あなたの手：${playerHand}`;
+document.getElementById("cpu").textContent = `CPUの手：${cpuHand}`;
+document.getElementById("outcome").textContent = `結果：${result}`;
+document.getElementById("score").textContent = `勝ち：${win} / 負け：${lose} / あいこ：${draw}`;
+getElementById()：HTMLの特定のIDを持つ要素を取得
+
+.textContent = ...：その中の文字を書き換える
+→ つまり、「クリックされたら表示も変える」処理だ。
+
+🧠 本当に大事なのはここ：
+処理	本質的に覚えること
+変数宣言	状態を保存する箱を作る（勝敗など）
+関数	じゃんけん処理をまとめて呼び出せるようにしている
+ランダム	Math.random() と Math.floor() で乱数作成
+if文	条件によって違う処理をする
+DOM操作	JSでHTMLを書き換えて動的な表示を作る
+
+🧪 補足：HTMLとのつながり
+このHTMLのボタン：
+
+html
+コピーする
+編集する
+<button onclick="play('グー')">グー</button>
+は、JavaScriptの関数を直接呼び出している。
+つまり「クリックすると play('グー') を実行するよ」ってこと。
+
+🧨 次にやるべきこと（選べ）：
+✨ 手を画像や絵文字にする → 表示を分かりやすく
+
+🔁 リセットボタンをつける → スコアを0に戻す処理
+
+🔥 ロジックを解説付きで自力で書く → 真の理解へ
+
+⚔️ 「神経衰弱」や「タイピング」などの次のゲームに進む
+

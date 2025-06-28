@@ -1,0 +1,30 @@
+body {
+  font-family: sans-serif;
+  text-align: center;
+  margin-top: 50px;
+  background-color: #f0f8ff;
+  background-image: url(https://user0514.cdnw.net/shared/img/thumb/_R5A9297-shikun_TP_V4.jpg);
+  background-size: contain;           /* 画像全体が収まるように表示 */
+  background-repeat: no-repeat;       /* 繰り返し表示を防止 */
+  background-position: center center; /* 中央に配置 */
+  background-color: #000;             /* 背景画像の外が空いた場合の背景色（任意） */
+  height: 100vh;                      /* 画面いっぱいに表示（必要に応じて） */
+  margin: 0;
+}
+
+h1{
+  color: #f0f8ff;
+}
+
+.buttons button {
+  font-size: 20px;
+  margin: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.result p {
+  font-size: 18px;
+  margin: 10px 0;
+  color: #f0f8ff;
+}

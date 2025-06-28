@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>じゃんけんゲーム</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>じゃんけんゲーム</h1>
+
+    <div class="buttons">
+      <button onclick="play('グー')">グー</button>
+      <button onclick="play('チョキ')">チョキ</button>
+      <button onclick="play('パー')">パー</button>
+    </div>
+
+    <div class="result">
+      <p id="player">あなたの手：-</p>
+      <p id="cpu">CPUの手：-</p>
+      <p id="outcome">結果：-</p>
+      <p id="score">勝ち：0 / 負け：0 / あいこ：0</p>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
